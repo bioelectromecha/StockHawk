@@ -1,26 +1,24 @@
 <resources>
+
+    <!--string constants used in app-->
     <string name="app_name">Stock Hawk</string>
-
     <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
-
-    <string name="pref_stocks_key">stocks</string>
-
-
-    <string name="pref_display_mode_key">displayMode</string>
+    <string name="pref_stocks_key" translatable="false">stocks</string>
+    <string name="pref_display_mode_key" translatable="false">displayMode</string>
     <string name="pref_display_mode_default">@string/pref_display_mode_percentage_key</string>
-
-    <string name="pref_display_mode_absolute_key">absolute</string>
+    <string name="pref_display_mode_absolute_key" >absolute</string>
     <string name="pref_display_mode_percentage_key">percentage</string>
 
-    <string name="default_stocks_yahoo">YHOO</string>
-    <string name="default_stocks_apple">AAPL</string>
-    <string name="default_stocks_microsoft">MSFT</string>
-    <string name="default_stocks_facebook">FB</string>
+    <!--default stocks-->
+    <string name="default_stocks_yahoo" translatable="false">YHOO</string>
+    <string name="default_stocks_apple" translatable="false">AAPL</string>
+    <string name="default_stocks_microsoft" translatable="false">MSFT</string>
+    <string name="default_stocks_facebook" translatable="false">FB</string>
 
 
     <string name="action_change_units">@string/pref_display_mode_key</string>
 
-
+    <!--dialog strings-->
     <string name="dialog_title">Add Stock</string>
     <string name="dialog_hint">Symbol (e.g. GOOG)</string>
     <string name="dialog_cancel">Cancel</string>
@@ -31,10 +29,19 @@
 
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
-    <string name="title_activity_detail">DetailActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--detail view strings -->
+    <string name="title_activity_detail">Stock Details</string>
+    <string name="stock_symbol_to_add">stock symbol to add</string>
+    <string name="stock_symbol">stock symbol</string>
+    <string name="stock_history_chart">stock history chart</string>
+
+    <!--stocks view strings-->
+    <string name="stocks_list">stocks list</string>
+    <string name="fab">floating action button</string>
+    <string name="error_message">error message</string>
+    <string name="stock_price">stock price</string>
+    <string name="stock_percent_price_change">stock percent price change</string>
 
 
 </resources>

@@ -5,5 +5,5 @@ package com.udacity.stockhawk;
  */
 
 public class Constants {
-    public static final String KEY_SYMBOL_PARCEL = "SYMBOL_PARCEL";
+    public static final String KEY_SYMBOL = "SYMBOL";
 }

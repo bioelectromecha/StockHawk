@@ -1,4 +1,28 @@
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <!--text sizes-->
+    <dimen name="large_title_text">32sp</dimen>
+    <dimen name="medium_title_text">24sp</dimen>
+    <dimen name="small_title_text">20sp</dimen>
+    <dimen name="large_body_text">16sp</dimen>
+    <dimen name="medium_body_text">12sp</dimen>
+    <dimen name="small_body_text">8sp</dimen>
+
+    <!--margins-->
+    <dimen name="quarter_margin">4dp</dimen>
+    <dimen name="half_margin">8dp</dimen>
+    <dimen name="single_margin">16dp</dimen>
+    <dimen name="double_margin">32dp</dimen>
+    <dimen name="quad_margin">64dp</dimen>
+
+
+    <!--elevations-->
+    <dimen name="single_elevation">4dp</dimen>
+
+    <!--card-->
+    <dimen name="card_corner_radius">4dp</dimen>
+
+    <!--sizes-->
+    <dimen name="half_inch">80dp</dimen>
+    <dimen name="inch">160dp</dimen>
+
 </resources>

@@ -1,12 +1,11 @@
 package com.udacity.stockhawk.dialogs;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.activities.StockListActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class AddStockDialog extends DialogFragment {
+public class AddStockDialog extends android.support.v4.app.DialogFragment {
 
     @SuppressWarnings("WeakerAccess")
     @BindView(R.id.dialog_stock)
@@ -67,9 +65,10 @@ public class AddStockDialog extends DialogFragment {
     }
 
     private void addStock() {
-        Activity parent = getActivity();
-        if (parent instanceof StockListActivity) {
-            ((StockListActivity) parent).addStock(stock.getText().toString());
+
+        Fragment fragment = getTargetFragment();
+        if (fragment instanceof StockDialogCallback) {
+            ((StockDialogCallback) fragment).addStock(stock.getText().toString());
         }
         dismissAllowingStateLoss();
     }

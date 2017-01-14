@@ -42,6 +42,7 @@ public final class QuoteSyncJob {
 
     /**
      * used to call the network and update the stock quotes
+     *
      * @param context
      */
     static void getQuotes(Context context) {
@@ -84,9 +85,9 @@ public final class QuoteSyncJob {
                 //get the stock corresponding to the current symbol in the iterator
                 Stock stock = quotes.get(symbol);
 
-                //skip to the next value if the yahoo doesn't have a name for the stock response it's not in the stocks response
-                if (stock.getName() == null) {
-                    Timber.d(">>>"+"null stock");
+                //skip to the next value if the stock doesn't exist or yahoo doesn't have a name for the stock
+                if (stock == null || stock.getName() == null) {
+                    Timber.d(">>>" + "null stock");
                     //TODO remove the unwanted stock from the current list
                     continue;
                 }
