@@ -40,16 +40,22 @@ public final class QuoteSyncJob {
     private QuoteSyncJob() {
     }
 
+    /**
+     * used to call the network and update the stock quotes
+     * @param context
+     */
     static void getQuotes(Context context) {
 
         Timber.d("Running sync job");
 
+        // from when to when to get the data
         Calendar from = Calendar.getInstance();
         Calendar to = Calendar.getInstance();
         from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
 
         try {
 
+            //get the stock symbols from shared preferences
             Set<String> stockPref = PrefUtils.getStocks(context);
             Set<String> stockCopy = new HashSet<>();
             stockCopy.addAll(stockPref);
@@ -61,25 +67,36 @@ public final class QuoteSyncJob {
                 return;
             }
 
+            //get the stock quotes from the YahooFinance api - if a symbol is not found, it won't be in the response!
             Map<String, Stock> quotes = YahooFinance.get(stockArray);
+
+            //iterator to iterate over the stock symbols
             Iterator<String> iterator = stockCopy.iterator();
 
             Timber.d(quotes.toString());
 
             ArrayList<ContentValues> quoteCVs = new ArrayList<>();
 
+            //iterate over the stock symbols
             while (iterator.hasNext()) {
                 String symbol = iterator.next();
 
-
+                //get the stock corresponding to the current symbol in the iterator
                 Stock stock = quotes.get(symbol);
+
+                //skip to the next value if the yahoo doesn't have a name for the stock response it's not in the stocks response
+                if (stock.getName() == null) {
+                    Timber.d(">>>"+"null stock");
+                    //TODO remove the unwanted stock from the current list
+                    continue;
+                }
+
+                //TODO add error handling for when maybe only one of the fields is missing
                 StockQuote quote = stock.getQuote();
-
-                float price = quote.getPrice().floatValue();
-                float change = quote.getChange().floatValue();
                 float percentChange = quote.getChangeInPercent().floatValue();
-
+                float price = quote.getPrice().floatValue();
                 // WARNING! Don't request historical data for a stock that doesn't exist!
+                float change = quote.getChange().floatValue();
                 // The request will hang forever X_x
                 List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
 

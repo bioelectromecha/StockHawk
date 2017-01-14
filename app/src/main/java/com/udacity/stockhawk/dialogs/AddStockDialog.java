@@ -1,4 +1,4 @@
-package com.udacity.stockhawk.ui;
+package com.udacity.stockhawk.dialogs;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.udacity.stockhawk.R;
+import com.udacity.stockhawk.activities.StockListActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +34,7 @@ public class AddStockDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        @SuppressLint("InflateParams") View custom = inflater.inflate(R.layout.add_stock_dialog, null);
+        @SuppressLint("InflateParams") View custom = inflater.inflate(R.layout.dialog_add_stock, null);
 
         ButterKnife.bind(this, custom);
 
@@ -67,8 +68,8 @@ public class AddStockDialog extends DialogFragment {
 
     private void addStock() {
         Activity parent = getActivity();
-        if (parent instanceof MainActivity) {
-            ((MainActivity) parent).addStock(stock.getText().toString());
+        if (parent instanceof StockListActivity) {
+            ((StockListActivity) parent).addStock(stock.getText().toString());
         }
         dismissAllowingStateLoss();
     }
