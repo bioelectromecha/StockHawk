@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.Manifest.permission.RECEIVE_BOOT_COMPLETED"/>
 
+
     <application
         android:name=".StockHawkApp"
         android:allowBackup="false"
@@ -42,6 +43,21 @@
             android:name=".activities.StockDetailActivity"
             android:label="@string/title_activity_detail">
         </activity>
+
+        <!--declare the widget provider-->
+        <service
+            android:name=".widget.StockWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver android:name=".widget.StockWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_metadata" />
+        </receiver>
+
     </application>
 
 </manifest>

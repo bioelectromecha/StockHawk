@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.fragments.DetailFragment;
 
+/**
+ * this activity is mainly a container fro the stock detail fragment
+ */
 public class StockDetailActivity extends AppCompatActivity {
 
     private static final String KEY_DETAIL_FRAGMENT = "DETAIL_FRAGMENT";

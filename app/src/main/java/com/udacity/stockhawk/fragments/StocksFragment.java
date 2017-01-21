@@ -35,6 +35,9 @@ import com.udacity.stockhawk.dialogs.AddStockDialog;
 import com.udacity.stockhawk.dialogs.StockDialogCallback;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
 
+/**
+ * this fragment displays a list of stocks added by the user
+ */
 public class StocksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,
         SwipeRefreshLayout.OnRefreshListener,
         StockAdapter.StockAdapterOnClickHandler,
